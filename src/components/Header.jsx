@@ -23,7 +23,7 @@ const Header = () => {
 			<label className='ml-12'>
 				<div className='flex items-center'>
 					<FaSearch className='absolute ml-2 text-white' />
-					<input type='text' placeholder='Search' className='pl-8 py-1 rounded-md bg-slate-100 bg-opacity-40 placeholder:text-white focus:ring-1 focus:ring-slate-200 focus:outline-none' />
+					<input type='text' placeholder='Search' className='pl-8 py-1 rounded-md bg-slate-100 bg-opacity-40 placeholder:text-white focus:ring-1 focus:ring-slate-200 focus:outline-none text-white' />
 				</div>
 			</label>
 			<div className='ml-auto flex justify-center items-center text-white'>

@@ -9,7 +9,7 @@ import { AiFillAppstore } from 'react-icons/ai';
 const SideBar = () => {
 	return (
 		<div className='bg-slate-50 w-72 h-screen dark:bg-slate-600'>
-			<ul className='ml-8 mt-8 cursor-pointer space-y-2'>
+			<ul className='mt-8 cursor-pointer space-y-2'>
 				<Link to='/inbox'>
 					<li className='flex items-center space-x-3 py-1 pl-5 mr-2 hover:bg-slate-200 dark:hover:bg-slate-500 hover:rounded-md'>
 						<VscInbox className='text-sky-400 text-xl' />

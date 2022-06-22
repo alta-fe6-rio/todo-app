@@ -2,7 +2,9 @@
 
 import axios from 'axios';
 
-const fetchData = async (url, method, body, token) => {
+const apiRequest = async (url, method, body, token) => {
+	const myToken = process.env.REACT_APP_API_KEY;
+	token = myToken;
 	var config = {
 		method,
 		url,
@@ -17,4 +19,4 @@ const fetchData = async (url, method, body, token) => {
 	return response.data;
 };
 
-export { fetchData };
+export default apiRequest;

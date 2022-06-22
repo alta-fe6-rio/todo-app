@@ -8,6 +8,8 @@ import Inbox from '../pages/Inbox';
 import Today from '../pages/Today';
 import Upcoming from '../pages/Upcoming';
 import Filter from '../pages/Filter';
+import CreateTask from '../pages/CreateTask';
+import CreateTodo from '../pages/CreateTodo';
 import { ThemeContext } from '../utils/context';
 
 const RouteApp = () => {
@@ -32,6 +34,8 @@ const RouteApp = () => {
 					<Route path='/today' element={<Today />} />
 					<Route path='/upcoming' element={<Upcoming />} />
 					<Route path='/filter' element={<Filter />} />
+					<Route path='/create-task' element={<CreateTask />} />
+					<Route path='/create-todo' element={<CreateTodo />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeContext.Provider>
