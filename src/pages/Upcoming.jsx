@@ -3,8 +3,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
+import { useNavigate } from 'react-router-dom';
+import { withRouter } from '../utils/navigation';
 
-const Upcoming = () => {
+const Upcoming = (props) => {
+	const navigate = useNavigate();
 	const [task, setTask] = useState([]);
 	const [remove, setRemove] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -17,7 +20,6 @@ const Upcoming = () => {
 		axios
 			.get('https://api.todoist.com/rest/v1/tasks', { headers: { Authorization: `Bearer ${process.env.REACT_APP_API_KEY}` } })
 			.then((res) => {
-				console.log(res.data);
 				setTask(res.data);
 			})
 			.catch((err) => {
@@ -48,14 +50,17 @@ const Upcoming = () => {
 	} else {
 		return (
 			<Layout>
-				<div className='mx-12 my-8 space-y-8'>
+				<div className='grid grid-cols-1 sm:grid-cols-3 gap-5 p-6'>
 					{task.map((item, index) => {
 						return (
 							<div key={index} className='rounded-sm items-center'>
-								<div className='bg-slate-300/30 sm:mx-36 p-4'>
-									<div>{item.content}</div>
+								<div className='bg-slate-300/30 px-6 py-3'>
+									<div className='flex justify-center'>{item.content}</div>
 									<div>{item.due && <p>{item.due.date}</p>}</div>
-									<div className='space-x-4'>
+									<div className='flex justify-between flex-wrap'>
+										<button className='bg-sky-500 px-4 py-1 rounded-sm text-white mt-3' onClick={() => navigate(`/edit/${item.id}`)}>
+											Edit
+										</button>
 										<button className='bg-red-500 px-4 py-1 rounded-sm text-white mt-3' onClick={() => handleRemove(item.id)}>
 											Delete
 										</button>
@@ -70,4 +75,4 @@ const Upcoming = () => {
 	}
 };
 
-export default Upcoming;
+export default withRouter(Upcoming);

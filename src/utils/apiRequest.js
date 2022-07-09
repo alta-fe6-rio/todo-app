@@ -10,7 +10,7 @@ const apiRequest = async (url, method, body, token) => {
 		url,
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
+			Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
 		},
 		data: body,
 	};

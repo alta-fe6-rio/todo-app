@@ -18,7 +18,6 @@ const Inbox = () => {
 		axios
 			.get('https://api.todoist.com/rest/v1/tasks', { headers: { Authorization: `Bearer ${process.env.REACT_APP_API_KEY}` } })
 			.then((res) => {
-				console.log(res.data);
 				setTask(res.data);
 			})
 			.catch((err) => {

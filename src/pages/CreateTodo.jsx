@@ -2,15 +2,10 @@
 
 import Layout from '../components/Layout';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const CreateTodo = () => {
-	const [loading, setLoading] = useState(true);
-	const [addPost, setAddPost] = useState({});
-
-	useEffect(() => {
-		postData();
-	}, []);
+	const [addPost, setAddPost] = useState('');
 
 	function postData() {
 		axios({
@@ -25,11 +20,6 @@ const CreateTodo = () => {
 			.catch((err) => {
 				console.log(err);
 			})
-			.finally(() => setLoading(false));
-	}
-
-	function handleChange(e) {
-		setAddPost({ ...addPost, [e.target.name]: e.target.value });
 	}
 
 	function sendData() {
@@ -37,9 +27,6 @@ const CreateTodo = () => {
 		alert('todo sukses dibuat.\nsilahkan pergi ke halaman upcoming untuk melihat detail.');
 	}
 
-	if (loading) {
-		return <div className='h-screen flex justify-center items-center text-2xl'>Loading...</div>;
-	} else {
 		return (
 			<Layout>
 				<div className='m-12 rounded-sm shadow-md'>
@@ -48,7 +35,7 @@ const CreateTodo = () => {
 						<div className='flex flex-col space-y-1'>
 							<label for='content'>Item</label>
 							<input
-								onChange={handleChange}
+								onChange={(e) => setAddPost(e.target.value)}
 								type='text'
 								name='content'
 								id='content'
@@ -65,7 +52,6 @@ const CreateTodo = () => {
 				</div>
 			</Layout>
 		);
-	}
 };
 
 export default CreateTodo;
