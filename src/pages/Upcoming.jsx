@@ -46,7 +46,7 @@ const Upcoming = (props) => {
 	}
 
 	if (loading) {
-		return <div className='h-screen flex justify-center items-center text-2xl'>Loading...</div>;
+		return <div className='h-screen flex justify-center items-center text-2xl dark:bg-slate-500 dark:text-white'>Loading...</div>;
 	} else {
 		return (
 			<Layout>
