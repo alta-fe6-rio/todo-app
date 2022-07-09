@@ -41,7 +41,7 @@ const Upcoming = (props) => {
 				console.log(err);
 			})
 			.finally(() => {
-				setLoading(false);
+				fetchData();
 			});
 	}
 

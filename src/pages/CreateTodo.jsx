@@ -3,15 +3,19 @@
 import Layout from '../components/Layout';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateTodo = () => {
 	const [addPost, setAddPost] = useState('');
+	const navigate = useNavigate();
 
 	function postData() {
 		axios({
 			method: 'post',
 			url: 'https://api.todoist.com/rest/v1/tasks',
-			data: addPost,
+			data: {
+				content: addPost,
+			},
 			headers: { Authorization: `Bearer ${process.env.REACT_APP_API_KEY}` },
 		})
 			.then((res) => {
@@ -20,11 +24,7 @@ const CreateTodo = () => {
 			.catch((err) => {
 				console.log(err);
 			})
-	}
-
-	function sendData() {
-		postData();
-		alert('todo sukses dibuat.\nsilahkan pergi ke halaman upcoming untuk melihat detail.');
+			.finally(() => navigate('/upcoming'));
 	}
 
 		return (
@@ -43,7 +43,7 @@ const CreateTodo = () => {
 								className='border py-1 px-2 focus:ring-1 focus:ring-sky-600 focus:outline-none dark:bg-slate-400 dark:placeholder:text-white dark:border-none dark:focus:ring-slate-300'
 							/>
 							<div className='text-white pt-2'>
-								<button className='bg-sky-500 py-2 px-4 rounded-sm hover:bg-sky-600' onClick={() => sendData()}>
+								<button className='bg-sky-500 py-2 px-4 rounded-sm hover:bg-sky-600' onClick={() => postData()}>
 									Post
 								</button>
 							</div>
